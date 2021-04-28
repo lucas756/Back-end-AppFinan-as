@@ -11,6 +11,14 @@ class ParcelaController {
     processFile(caminho, file.path, req)
     return res.json(file);
   }
+  async index(req, res){
+      const parcelas = await Parcela.findAll({
+        where: {
+          grupo_id: req.query.grupo_id
+        }
+      })
+      return res.json(parcelas)
+  }
 
 }
 function processFile(caminho, nome, req) {
@@ -35,7 +43,7 @@ function addParcelas(data, req) {
     e.grupo_id = Number(req.body.grupo_id)
     console.log(e);
     Parcela.create(e);
-  })
-}
+  }); 
+};
 
 export default new ParcelaController();

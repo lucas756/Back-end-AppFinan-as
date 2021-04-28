@@ -1,6 +1,4 @@
 import * as Yup from 'yup';
-
-import User from '../models/User';
 import Grupo from '../models/Grupo';
 
 class GrupoController {
@@ -20,12 +18,13 @@ class GrupoController {
         return res.status(201).json(grupo);
     }
 
-    async buscarGrupos(req, res){
-       const busca = await Grupo.findAll({
+    async index(req, res){
+        const busca = await Grupo.findAll({
             where: {
                 user_id: req.userId
             }
         })
+        console.log('chegou aqui')
 
         console.log(busca)
 

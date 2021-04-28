@@ -20,13 +20,14 @@ routes.post('/sessions', SessionController.store);
 
 routes.use(authMiddleware);
 
-routes.get('/grupo', GrupoController.buscarGrupos); 
 
+routes.get('/grupo', GrupoController.index); 
 
 // Routes with authentication.
 routes.put('/users', UserController.update); 
 routes.post('/grupo', GrupoController.store); 
 routes.post('/parcelas', upload.single('file'), ParcelaController.store);
+routes.get('/parcelas', ParcelaController.index);
 routes.post('/comprovante', upload.single('imagem'), ComprovanteController.store);
 routes.post('/file', upload.single('file'), FileController.store);
 
