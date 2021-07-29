@@ -4,13 +4,13 @@ import Sequelize from 'sequelize';
 import databaseConfig from '../config/database';
 
 import User from '../app/models/User';
-import Parcela from '../app/models/Parcela';
-import Grupo from '../app/models/Grupo';
-import File from '../app/models/File';
-import Comprovante from '../app/models/Comprovante';
+import Client from '../app/models/Client';
+import Services from '../app/models/Services';
+import Schedules from '../app/models/Schedules';
 
 
-const models = [User, Parcela, Grupo, File, Comprovante];
+
+const models = [User, Client, Services, Schedules];
 
 class Database {
   constructor() {

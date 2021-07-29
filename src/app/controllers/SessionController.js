@@ -2,7 +2,7 @@ import jwt from 'jsonwebtoken';
 import * as Yup from 'yup';
 
 import User from '../models/User';
-import File from '../models/Parcela';
+import File from '../models/Client';
 import authConfig from '../../config/auth';
 
 class SessionController {

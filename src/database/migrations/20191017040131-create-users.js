@@ -15,10 +15,6 @@ module.exports = {
       allowNull: false,
       unique: true,
     },
-    salario: {
-      type: Sequelize.FLOAT,
-      allowNull: false,
-    },
     password_hash: {
       type: Sequelize.STRING,
       allowNull: false,

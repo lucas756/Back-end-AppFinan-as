@@ -1,10 +1,12 @@
 import Sequelize, { Model } from 'sequelize';
 
-class Grupo extends Model {
+class Client extends Model {
   static init(sequelize) {
     super.init({
+      barbeiro_id: Sequelize.INTEGER,
       name: Sequelize.STRING,
-      user_id: Sequelize.INTEGER,
+      email: Sequelize.STRING,
+      numero: Sequelize.STRING,
     }, {
       sequelize,
     });
@@ -13,4 +15,4 @@ class Grupo extends Model {
   }
 }
 
-export default Grupo;
+export default Client;

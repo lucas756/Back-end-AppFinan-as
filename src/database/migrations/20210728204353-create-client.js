@@ -1,28 +1,30 @@
 module.exports = {
-  up: (queryInterface, Sequelize) => queryInterface.createTable('comprovantes', {
+  up: (queryInterface, Sequelize) => queryInterface.createTable('clients', {
     id: {
       type: Sequelize.INTEGER,
       allowNull: false,
       autoIncrement: true,
       primaryKey: true,
     },
-    name: {
-      type: Sequelize.STRING,
-      allowNull: false,
-    },
-    user_id: {
+    barbeiro_id: {
       type: Sequelize.INTEGER,
       references: { model: 'users', key: 'id' },
       onUpdate: 'CASCADE',
       onDelete: 'SET NULL',
       allowNull: true,
     },
-    parcelas_id: {
-      type: Sequelize.INTEGER,
-      references: { model: 'parcelas', key: 'id' },
-      onUpdate: 'CASCADE',
-      onDelete: 'SET NULL',
-      allowNull: true,
+    name: {
+      type: Sequelize.STRING,
+      allowNull: false,
+    },
+    email: {
+      type: Sequelize.STRING,
+      allowNull: false,
+      unique: true,
+    },
+    numero: {
+      type: Sequelize.STRING,
+      allowNull: false,
     },
     created_at: {
       type: Sequelize.DATE,
@@ -34,5 +36,5 @@ module.exports = {
     },
   }),
 
-  down: queryInterface => queryInterface.dropTable('comprovantes'),
+  down: queryInterface => queryInterface.dropTable('clients'),
 };

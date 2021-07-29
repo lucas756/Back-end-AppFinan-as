@@ -1,18 +1,14 @@
 import * as Yup from 'yup';
 
 import User from '../models/User';
-import File from '../models/Parcela';
 
 class UserController {
   async store(req, res) {
-    /**
-     * Validate user input data.
-     */
+    console.log('aqui')
     const schema = Yup.object().shape({
       name: Yup.string().required(),
       email: Yup.string().email().required(),
       password: Yup.string().required().min(6),
-      salario: Yup.number().required(),
     });
 
     try {
@@ -33,10 +29,10 @@ class UserController {
     /**
      * Create a new user.
      */
-    const { id, name, email, salario } = await User.create(req.body);
+    const { id, name, email } = await User.create(req.body);
 
     return res.status(201).json({
-      id, name, email, salario,
+      id, name, email
     });
   }
 
