@@ -14,9 +14,9 @@ class SchedulesController {
     try {
       await schema.validate(req.body);
     } catch (err) {
-      return res.status(422).json({ error: `Validation fails: ${ err.message }` });
+      return res.status(422).json({ error: 'valdação falhou' });
     }
-    const serviceExists = await Schedules.findOne({ where: {date_schedule: req.body.date_schedule} });
+    const serviceExists = await Schedules.findOne({ where: { date_schedule: req.body.date_schedule } });
 
     if (serviceExists) {
       return res.status(422).json({ error: 'Service already exists.' });
@@ -25,15 +25,17 @@ class SchedulesController {
     const response = await Schedules.create(req.body);
     return res.status(201).json(response);
   }
-  async index(req, res){
-    const response = await Schedules.findAll({where: {barbeiro_id: req.userId}, 
-        include: [
+  async index(req, res) {
+    const response = await Schedules.findAll({
+      where: { barbeiro_id: req.userId },
+      include: [
         {
           model: Service,
           as: 'services',
           attributes: ['id', 'preço', 'tipo'],
         },
-      ], });
+      ],
+    });
 
     return res.status(200).json(response)
   }

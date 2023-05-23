@@ -18,7 +18,7 @@ class SessionController {
     try {
       await schema.validate(req.body);
     } catch (err) {
-      return res.status(422).json({ error: `Validation fails: ${ err.message }` });
+      return res.status(422).json({ error: `Validation fails: ${err.message}` });
     }
 
     /**
@@ -29,18 +29,18 @@ class SessionController {
       where: { email },
     });
 
-    
+
     if (!user) {
-      return res.status(401).json({ error: 'User not found.' });
+      return res.status(401).json({ error: 'usuario não existe.' });
     }
-    
+
     /**
      * Checks if user password is valid.
      */
     if (!(await user.checkPassword(password))) {
       return res.status(401).json({ error: 'Password does not match.' });
     }
-    
+
     const { id, name } = user;
 
     return res.json({
